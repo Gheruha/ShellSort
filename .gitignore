@@ -1,0 +1,2 @@
+# Ignore all directories starting with "bazel-"
+bazel-*/
