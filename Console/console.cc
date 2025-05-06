@@ -1,9 +1,21 @@
 #include <iostream>
 #include <string>
+#include <fstream>
+#include <filesystem>
+#include <vector>
+#include "manageJson/manage.h"
+
 using namespace std;
+
 
 void selectFunctionToRun(string option)
 {
-    cout << option << "\n";
-    cout << "Select function to run... \n";
+    if (option == "-json")
+    {
+        manageJsonFiles();
+    }
+    else
+    {
+        cout << "There are no options like this yet.\nFor help use -help tag\n";
+    }
 }

@@ -1,3 +1,4 @@
 Help 🔍
 
 FUNCTIONS: 
+Manage/Sort JSON files: -json

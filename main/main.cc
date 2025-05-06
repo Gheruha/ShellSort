@@ -1,8 +1,12 @@
 #include <iostream>
 #include <fstream>
+#include <filesystem>
 #include <string>
+#include <vector>
 #include "Console/console.h"
+
 using namespace std;
+namespace fs = filesystem;
 
 int main(int argc, const char *argv[])
 {
@@ -31,7 +35,7 @@ int main(int argc, const char *argv[])
             }
             helpFile.close();
         }
-        else if(argc == 2)
+        else if (argc == 2)
         {
             selectFunctionToRun(option);
         }
