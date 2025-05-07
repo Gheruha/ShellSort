@@ -8,6 +8,7 @@ using namespace std;
 namespace fs = filesystem;
 
 // Accumulate all the json files function
+
 vector<fs::path> accumulateJsonFiles(const fs::path &dir)
 {
     vector<fs::path> configs;
@@ -30,7 +31,7 @@ vector<fs::path> accumulateJsonFiles(const fs::path &dir)
     return configs;
 }
 
-void manageJsonFiles()
+void seeJsonFiles()
 {
     vector<fs::path> configs = accumulateJsonFiles("configs");
     if (configs.empty())
@@ -43,5 +44,31 @@ void manageJsonFiles()
         {
             cout << "[" << i + 1 << "] " << configs[i].filename().string() << "\n";
         }
+    }
+}
+
+void readJsonFiles()
+{
+    vector<fs::path> configs = accumulateJsonFiles("configs");
+    cout << "Which file do you want to read: ";
+    int option;
+    cin >> option;
+
+    // Open and print the chosen file
+    fs::path selected = configs[option - 1];
+    ifstream ifs(selected);
+    if (!ifs)
+    {
+        cerr << "Error: could not open " << selected << "\nRun -jsee to see available files.\n";
+    }
+    else
+    {
+        cout << "\n================== Contents of " << selected.filename().string() << " ==================\n";
+        string line;
+        while (getline(ifs, line))
+        {
+            cout << line << "\n";
+        }
+        cout << "================== end of file ==================\n";
     }
 }

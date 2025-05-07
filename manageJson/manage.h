@@ -6,7 +6,8 @@
 using namespace std;
 namespace fs = filesystem;
 
-void manageJsonFiles();
+void seeJsonFiles();
+void readJsonFiles();
 vector<fs::path> accumulateJsonFiles(const fs::path &dir);
 
 #endif

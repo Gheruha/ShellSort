@@ -7,12 +7,16 @@
 
 using namespace std;
 
-
-void selectFunctionToRun(string option)
+void selectFunctionToRun(string &option)
 {
-    if (option == "-json")
+    if (option == "-jsee")
     {
-        manageJsonFiles();
+        cout << "configs/files\n";
+        seeJsonFiles();
+    }
+    else if (option == "-jread")
+    {
+        readJsonFiles();
     }
     else
     {

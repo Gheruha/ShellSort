@@ -10,6 +10,15 @@ namespace fs = filesystem;
 
 int main(int argc, const char *argv[])
 {
+    ifstream logoFile("main/logo.txt");
+    string line = "";
+
+    while (getline(logoFile, line))
+    {
+        cout << line << "\n";
+    }
+    logoFile.close();
+
     if (argc < 2)
     {
         cout << "You need to select an option\n";
@@ -39,5 +48,5 @@ int main(int argc, const char *argv[])
         {
             selectFunctionToRun(option);
         }
-    }
+        }
 }

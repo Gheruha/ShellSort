@@ -4,7 +4,6 @@
 #include <string>
 using namespace std;
 
-void selectFunctionToRun(string option);
-void manageJsonFiles();
+void selectFunctionToRun(string &option);
 
 #endif

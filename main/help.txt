@@ -1,4 +1,5 @@
 Help 🔍
 
 FUNCTIONS: 
-Manage/Sort JSON files: -json
+See JSON files: -jsee
+Read JSON file: -jread filename
