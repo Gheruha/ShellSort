@@ -1,5 +1,7 @@
 Help 🔍
 
 FUNCTIONS: 
-See JSON files: -jsee
+Add JSON file: -jadd
+See JSON file: -jsee
 Read JSON file: -jread filename
+Sort JSON file: -jsort

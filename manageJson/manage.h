@@ -6,9 +6,10 @@
 using namespace std;
 namespace fs = filesystem;
 
+vector<fs::path> accumulateJsonFiles(const fs::path &dir);
 void seeJsonFiles();
 void readJsonFiles();
-vector<fs::path> accumulateJsonFiles(const fs::path &dir);
+void addJsonFile();
 void sortJsonFile();
 
 #endif

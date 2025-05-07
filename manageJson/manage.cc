@@ -49,6 +49,84 @@ void seeJsonFiles()
     }
 }
 
+void addJsonFile()
+{
+    fs::path dir = "configs";
+    if (!fs::exists(dir))
+        fs::create_directory(dir);
+
+    // Ask for filename
+    cout << "Enter new JSON filename (without extension): ";
+    string name;
+    cin >> name;
+    fs::path filepath = dir / (name + ".json");
+    if (fs::exists(filepath))
+    {
+        cout << "❌ A file named “" << filepath.filename() << "” already exists.\n";
+        return;
+    }
+
+    // Open for writing
+    ofstream ofs(filepath);
+    if (!ofs)
+    {
+        cerr << "❌ Could not create “" << filepath << "”.\n";
+        return;
+    }
+
+    // Read multi-line JSON from the user
+    cout << "Paste your JSON now. End with a line containing just a single dot (.)\n";
+    cin.ignore(numeric_limits<streamsize>::max(), '\n'); // flush leftover newline
+    string line;
+    while (true)
+    {
+        getline(cin, line);
+        if (line == ".")
+            break;
+        ofs << line << "\n";
+    }
+    ofs.close();
+
+    cout << "✅ Created “" << filepath.filename() << "” with your content.\n";
+}
+
+/// 2) Let the user delete an existing JSON file
+void deleteJsonFile()
+{
+    vector<fs::path> configs = accumulateJsonFiles("configs");
+    if (configs.empty())
+    {
+        cout << "There are no JSON files to delete.\n";
+        return;
+    }
+
+    // List them
+    cout << "Which file do you want to delete?\n";
+    for (size_t i = 0; i < configs.size(); ++i)
+    {
+        cout << "  [" << i + 1 << "] " << configs[i].filename().string() << "\n";
+    }
+    cout << "Enter number: ";
+    size_t choice;
+    cin >> choice;
+    if (choice < 1 || choice > configs.size())
+    {
+        cerr << "❌ Invalid selection.\n";
+        return;
+    }
+
+    fs::path toDelete = configs[choice - 1];
+    cout << "Deleting “" << toDelete.filename() << "” … ";
+    if (fs::remove(toDelete))
+    {
+        cout << "Done.\n";
+    }
+    else
+    {
+        cout << "Failed!\n";
+    }
+}
+
 // Reading the file that the user wants
 void readJsonFiles()
 {
