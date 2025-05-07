@@ -2,6 +2,7 @@ Help 🔍
 
 FUNCTIONS: 
 Add JSON file: -jadd
+Delete JSON file: -jdel
 See JSON file: -jsee
 Read JSON file: -jread filename
 Sort JSON file: -jsort

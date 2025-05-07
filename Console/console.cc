@@ -18,10 +18,16 @@ void selectFunctionToRun(string &option)
     {
         readJsonFiles();
     }
-    else if (option == "-jadd"){
+    else if (option == "-jadd")
+    {
         addJsonFile();
     }
-    else if (option == "-jsort"){
+    else if (option == "-jdel")
+    {
+        deleteJsonFile();
+    }
+    else if (option == "-jsort")
+    {
         sortJsonFile();
     }
     else

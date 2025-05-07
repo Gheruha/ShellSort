@@ -9,7 +9,7 @@ using namespace std;
 namespace fs = filesystem;
 using json = nlohmann::json;
 
-// Accumulate all the json files function
+// 1.Accumulate all the json files function
 vector<fs::path> accumulateJsonFiles(const fs::path &dir)
 {
     vector<fs::path> configs;
@@ -32,7 +32,7 @@ vector<fs::path> accumulateJsonFiles(const fs::path &dir)
     return configs;
 }
 
-// See all the available json files
+// 2.See all the available json files
 void seeJsonFiles()
 {
     vector<fs::path> configs = accumulateJsonFiles("configs");
@@ -49,6 +49,7 @@ void seeJsonFiles()
     }
 }
 
+// 3. Add json file
 void addJsonFile()
 {
     fs::path dir = "configs";
@@ -90,7 +91,7 @@ void addJsonFile()
     cout << "✅ Created “" << filepath.filename() << "” with your content.\n";
 }
 
-/// 2) Let the user delete an existing JSON file
+// 4. Delete json file
 void deleteJsonFile()
 {
     vector<fs::path> configs = accumulateJsonFiles("configs");
@@ -127,7 +128,7 @@ void deleteJsonFile()
     }
 }
 
-// Reading the file that the user wants
+// 5. Reading the file that the user wants
 void readJsonFiles()
 {
     vector<fs::path> configs = accumulateJsonFiles("configs");
@@ -154,6 +155,7 @@ void readJsonFiles()
     }
 }
 
+// 6. Sort selected file
 void sortJsonFile()
 {
     vector<fs::path> configs = accumulateJsonFiles("configs");
@@ -161,7 +163,7 @@ void sortJsonFile()
     int option;
     cin >> option;
 
-    // 1) Load & parse
+    // 1. Load & parse
     fs::path filepath = configs[option - 1];
     ifstream ifs(filepath);
     if (!ifs)
@@ -185,7 +187,7 @@ void sortJsonFile()
         return;
     }
 
-    // 2) Read & validate choice
+    // 2. Read & validate choice
     string field;
     while (true)
     {
@@ -205,7 +207,7 @@ void sortJsonFile()
         break;
     }
 
-    // 3) Perform the sort
+    // 3. Perform the sort
     sort(j.begin(), j.end(),
          [&](const json &a, const json &b)
          {
@@ -215,7 +217,7 @@ void sortJsonFile()
              return sa < sb;
          });
 
-    // 4) Write back (overwriting)
+    // 4. Write back (overwriting)
     ofstream ofs(filepath);
     if (!ofs)
     {

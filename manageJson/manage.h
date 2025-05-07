@@ -10,6 +10,7 @@ vector<fs::path> accumulateJsonFiles(const fs::path &dir);
 void seeJsonFiles();
 void readJsonFiles();
 void addJsonFile();
+void deleteJsonFile();
 void sortJsonFile();
 
 #endif
