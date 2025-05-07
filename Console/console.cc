@@ -18,6 +18,9 @@ void selectFunctionToRun(string &option)
     {
         readJsonFiles();
     }
+    else if (option == "-jsort"){
+        sortJsonFile();
+    }
     else
     {
         cout << "There are no options like this yet.\nFor help use -help tag\n";
